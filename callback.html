@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Connecting</title>
+<body style="margin:0;background:#1C1C1F;color:#fff;font:18px/1.6 system-ui,sans-serif"><main style="max-width:640px;margin:0 auto;padding:48px 16px"><h1 id="m">Finishing up...</h1></main>
+<script>
+// Google sends her here after she approves. This page passes the reply on to the connect tool, whose address is in `state`.
+// It only ever forwards to an ngrok address. A code alone is useless without the app's secret.
+var q = new URLSearchParams(location.search);
+var host = (q.get("state") || "").split(".").slice(1).join(".");
+if (/^[a-z0-9-]+\.ngrok-free\.app$/.test(host)) location.replace("https://" + host + "/oauth/callback" + location.search);
+else document.getElementById("m").textContent = "This link isn't valid.";
+</script></body></html>
